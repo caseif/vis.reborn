@@ -12,6 +12,8 @@ let Spectrum = new function() {
     }
 
     let drawCallback = function(spectrum, multiplier) {
+        spectrum = Transform.getTransformedSpectrum(spectrum);
+
         for (let i = 0; i < spectrum.length; i++) {
             drawBar(spectrum, i);
         }
@@ -26,7 +28,7 @@ let Spectrum = new function() {
 
         let specHeight = Util.getSpectrumHeight();
 
-        let barHeight = spectrum[index] / 256 * specHeight;
+        let barHeight = spectrum[index] * specHeight;
         let barY = Util.getYOffset() + specHeight - barHeight;
 
         Canvas.context.fillStyle = "#000000";

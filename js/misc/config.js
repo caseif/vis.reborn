@@ -1,8 +1,8 @@
 let Config = new function() {
     // analyzer config
-    this.temporalSmoothing = 0.1;
-    this.minDecibels = -40;
-    this.maxDecibels = -30;
+    this.temporalSmoothing = 0.2;
+    this.minDecibels = -100;
+    this.maxDecibels = -33;
     this.fftSize = 16384;
 
     // emblem config
@@ -20,8 +20,17 @@ let Config = new function() {
     this.maxShakeScalar = 1.6;
 
     // transform config
-    this.startBin = 8;
-    this.keepBins = 63; // 40
+    this.startBin = 4;
+    this.endBin = 1200;
+    this.visualBins = 63;
+    this.spectrumScale = 2.5; // the logarithmic scale to adjust spectrum values to
+    this.spectrumMaxExponent = 6; // the max exponent to raise spectrum values to
+    this.spectrumMinExponent = 3; // the min exponent to raise spectrum values to
+    this.spectrumExponentScale = 2; // the scale for spectrum exponents
+    
+    this.headMargin = 7; // the size of the head margin dropoff zone
+    this.tailMargin = 0; // the size of the tail margin dropoff zone
+    this.minMarginWeight = 0.7; // the minimum weight applied to bars in the dropoff zone
 
     // spectrum config
     this.spectrumWidth = 1568;
