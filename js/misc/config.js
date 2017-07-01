@@ -6,6 +6,12 @@ let Config = new function() {
     this.fftSize = 16384;
 
     // emblem config
+    this.emblemWidth = 0.63;
+    this.emblemHeight = 0.73;
+    this.blockSize = 192;
+
+    this.verticalBuffer = 50; // buffer between spectrum and emblem/song info
+
     this.minEmblemSize = 480;
     this.maxEmblemSize = 600;
     this.maxShakeIntensity = Math.PI / 3;
@@ -18,6 +24,9 @@ let Config = new function() {
     this.keepBins = 40;
 
     // spectrum config
+    this.spectrumWidth = 1568;
+    this.spectrumAspectRatio = 4.5;
+
     this.smoothingPasses = 1;
     this.smoothingPoints = 3;
     this.spectrumHeightScalar = 0.4;

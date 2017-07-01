@@ -21,7 +21,7 @@ let Spectrum = new function() {
         }
         spectrumCache.push(spectrum);
 
-        let curRad = Emblem.calcRadius(multiplier);
+        let curRad = 0;
 
         for (let s = Config.spectrumCount - 1; s >= 0; s--) {
             let curSpectrum = smooth(spectrumCache[Math.max(spectrumCache.length - Config.delays[s] - 1, 0)],

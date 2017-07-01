@@ -11,39 +11,46 @@ let Emblem = new function() {
 
         image = new Image();
         image.onload = () => loaded = true;
-        image.src = "./img/emblem.svg";
+        image.src = "./img/mcat.svg";
 
-        Callbacks.addCallback(drawCallback);
+        Callbacks.addCallback(this.redraw); //TODO: eventually make this not a callback
     }
 
-    let drawCallback = function(_, multiplier) {
+    this.redraw = function() {
         if (!Config.drawEmblem) {
             return;
         }
 
         if (!loaded) {
-            return;
+            //return;
         }
 
-        currentRadius = Emblem.calcRadius(multiplier);
-        let xOffset = jqWindow.width() / 2 - currentRadius;
-        let yOffset = jqWindow.height() / 2 - currentRadius;
-        Canvas.context.save();
+        let realBlockSize = Config.blockSize * Util.getResolutionMultiplier();
+
+        console.log(Config.spectrumWidth * Util.getResolutionMultiplier());
+        console.log(jqWindow.width());
+
+        let blockOffsetX = (jqWindow.width() - Config.spectrumWidth * Util.getResolutionMultiplier()) / 2;
+
+        let catOffsetX = blockOffsetX + realBlockSize * (1 - Config.emblemWidth) / 2;
+
+        let fullHeight = (Config.spectrumWidth / Config.spectrumAspectRatio + Config.verticalBuffer + Config.blockSize)
+                * Util.getResolutionMultiplier();
+
+        let blockOffsetY = (jqWindow.height() + fullHeight) / 2 - realBlockSize;
+        
+        let catOffsetY = blockOffsetY + realBlockSize * (1 - Config.emblemHeight) / 2;
+
         Canvas.context.fillStyle = "#000000";
-        let dimension = currentRadius * 2;
-        Canvas.context.drawImage(image, xOffset, yOffset, dimension, dimension);
-        Canvas.context.restore();
-    }
+        Canvas.context.beginPath();
+        Canvas.context.rect(blockOffsetX, blockOffsetY, realBlockSize, realBlockSize);
+        Canvas.context.fill();
 
-    this.getRadius = function() {
-        return currentRadius;
-    }
+        Canvas.context.fillStyle = "#FFFFFF";
+        Canvas.context.drawImage(image, catOffsetX, catOffsetY,
+                realBlockSize * Config.emblemWidth, realBlockSize * Config.emblemHeight);
 
-    this.calcRadius = function(multiplier) {
-        let minSize = Config.minEmblemSize;
-        let maxSize = Config.maxEmblemSize;
-        let scalar = multiplier * (maxSize - minSize) + minSize;
-        return Util.getResolutionMultiplier() * scalar / 2;
+        console.log(blockOffsetX + ", " + blockOffsetY);
     }
 
 }
