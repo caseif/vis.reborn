@@ -1,5 +1,9 @@
 let Util = new function() {
 
+    const STD_WIDTH = 1920;
+    const STD_HEIGHT = 1080;
+    const STD_ASPECT = STD_WIDTH / STD_HEIGHT;
+
     let resMultX = 1;
     let resMultY = 1;
 
@@ -49,8 +53,8 @@ let Util = new function() {
     }
 
     let updateResolutionMultipliers = function() {
-        resMultX = jqWindow.width() / 1920;
-        resMultY = jqWindow.height() / 1080;
+        resMultX = jqWindow.width() / STD_WIDTH;
+        resMultY = jqWindow.height() / STD_HEIGHT;
     }
 
     this.clamp = function(val, min, max) {
@@ -93,11 +97,12 @@ let Util = new function() {
     }
 
     this.getDrawAreaHeight = function() {
-        return this.getSpectrumHeight() + (Config.verticalBuffer + Config.blockSize) * this.getYResolutionMultiplier()
+        return this.getSpectrumHeight() + (Config.verticalBuffer + Config.blockSize) * this.getYResolutionMultiplier();
     }
 
     this.getSpectrumHeight = function() {
-        return (Config.spectrumWidth / Config.spectrumAspectRatio) * this.getYResolutionMultiplier()
+        return (Config.spectrumWidth / Config.spectrumAspectRatio) * (jqWindow.width() / jqWindow.height() / STD_ASPECT)
+                * this.getYResolutionMultiplier();
     }
 
 }

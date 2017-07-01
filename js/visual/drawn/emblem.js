@@ -22,7 +22,7 @@ let Emblem = new function() {
         }
 
         if (!loaded) {
-            //return;
+            return;
         }
 
         let realBlockSize = Config.blockSize * Util.getXResolutionMultiplier();
