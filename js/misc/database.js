@@ -54,7 +54,7 @@ let Database = new function() {
         dbTemplate = $.templates("#table-row-template");
 
         // Create Database
-        db = new Dexie("visDB");
+        db = new Dexie("visjs");
         db.version(1).stores({id3: "++id, artist, title, duration, img, audio"});
         db.open().catch(e => alert("Open failed: " + e));
 

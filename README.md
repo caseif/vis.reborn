@@ -1,13 +1,13 @@
-# js.nation
+# vis.reborn
 
-js.nation is a music visualizer inspired by [Trap Nation](https://www.youtube.com/user/AllTrapNation). Screenshots
-coming soon.
+vis.reborn is the continuation of [vis.js](https://github.com/caseif/vis.js), a music visualizer inspired by
+[Monstercat](https://www.youtube.com/user/Monstercat).
 
 Please note that this project is still under heavy development and may change considerably between now and general
 release.
 
 ## Requirements
-To use js.nation, you'll need a decently-powered computer and a modern browser (see below for supported browsers).
+To use vis.reborn, you'll need a decently-powered computer and a modern browser (see below for supported browsers).
 Laptops may lag a little, and phones straight-up will not work properly.
 
 ## Browser Support
@@ -22,9 +22,3 @@ The following browsers are **not** supported:
 
 - Internet Explorer (no AudioNode support)
 - Safari (limited AudioNode support)
-
-## Live demo
-A live demo can be found [here](https://ts.caseif.net).
-
-## Screenshots
-Coming soon!
