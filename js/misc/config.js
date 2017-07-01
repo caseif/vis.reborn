@@ -9,15 +9,7 @@ let Config = new function() {
     this.emblemWidth = 0.63;
     this.emblemHeight = 0.73;
     this.blockSize = 192;
-
     this.verticalBuffer = 50; // buffer between spectrum and emblem/song info
-
-    this.minEmblemSize = 480;
-    this.maxEmblemSize = 600;
-    this.maxShakeIntensity = Math.PI / 3;
-    this.maxShakeDisplacement = 8;
-    this.minShakeScalar = 0.9;
-    this.maxShakeScalar = 1.6;
 
     // transform config
     this.startBin = 4;
@@ -36,19 +28,11 @@ let Config = new function() {
     this.spectrumWidth = 1568;
     this.spectrumAspectRatio = 4.5;
 
-    this.barSpacing = 0.2;
+    this.barSpacing = 0.3;
 
     this.smoothingPasses = 1;
     this.smoothingPoints = 3;
-    this.spectrumHeightScalar = 0.4;
     this.glowRadius = 25;
-
-    this.spectrumCount = 8;
-    this.exponents = [1, 1.12, 1.14, 1.30, 1.33, 1.36, 1.50, 1.52];
-    this.smoothMargins = [0, 2, 2, 3, 3, 3, 5, 5];
-    //              white      yellow      red        pink      indigo    blue        lightblue  green
-    this.colors = ["#FFFFFF", "#FFFF00", "#FF0000", "#FF66FF", "#333399", "#0000FF", "#33CCFF", "#00FF00"];
-    this.delays = [0, 1, 2, 3, 4, 5, 6, 7];
 
     // particle config
     this.maxParticleCount = 2400; // particle count at 1080p

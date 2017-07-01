@@ -37,12 +37,12 @@ let Emblem = new function() {
         
         let catOffsetY = blockOffsetY + realBlockSize * (1 - Config.emblemHeight) / 2;
 
-        Canvas.context.fillStyle = "#000000";
+        Canvas.context.fillStyle = "#FFFFFF";
         Canvas.context.beginPath();
         Canvas.context.rect(blockOffsetX, blockOffsetY, realBlockSize, realBlockSize);
         Canvas.context.fill();
 
-        Canvas.context.fillStyle = "#FFFFFF";
+        Canvas.context.fillStyle = "#000000";
         Canvas.context.drawImage(image, catOffsetX, catOffsetY,
                 realBlockSize * Config.emblemWidth, realBlockSize * Config.emblemHeight);
     }
