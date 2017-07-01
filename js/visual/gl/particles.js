@@ -152,7 +152,7 @@ let Particles = new function() {
     this.updateSizes = function() {
         for (let i = 0; i < Config.maxParticleCount / 2; i++) {
             applyMirroredValue(this.particlesGeom.attributes.size.array, i,
-                    baseSizes[i] * Util.getResolutionMultiplier());
+                    baseSizes[i] * Util.getXResolutionMultiplier());
         }
         this.particlesGeom.attributes.size.needsUpdate = true;
     }

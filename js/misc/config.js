@@ -21,11 +21,13 @@ let Config = new function() {
 
     // transform config
     this.startBin = 8;
-    this.keepBins = 40;
+    this.keepBins = 63; // 40
 
     // spectrum config
     this.spectrumWidth = 1568;
     this.spectrumAspectRatio = 4.5;
+
+    this.barSpacing = 0.2;
 
     this.smoothingPasses = 1;
     this.smoothingPoints = 3;

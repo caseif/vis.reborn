@@ -12,6 +12,30 @@ let Spectrum = new function() {
     }
 
     let drawCallback = function(spectrum, multiplier) {
+        for (let i = 0; i < spectrum.length; i++) {
+            drawBar(spectrum, i);
+        }
+    }
+
+    let drawBar = function(spectrum, index) {
+        let baseX = Util.getXOffset();
+        let realWidth = Config.spectrumWidth * Util.getXResolutionMultiplier();
+
+        let barX = baseX + index * (realWidth / spectrum.length);
+        let barWidth = (realWidth / spectrum.length) * (1 - Config.barSpacing);
+
+        let specHeight = Util.getSpectrumHeight();
+
+        let barHeight = spectrum[index] / 256 * specHeight;
+        let barY = Util.getYOffset() + specHeight - barHeight;
+
+        Canvas.context.fillStyle = "#000000";
+        Canvas.context.beginPath();
+        Canvas.context.rect(barX, barY, barWidth, barHeight);
+        Canvas.context.fill();
+    }
+
+    /*let drawCallback = function(spectrum, multiplier) {
         if (!Config.drawSpectrum) {
             return;
         }
@@ -44,7 +68,7 @@ let Spectrum = new function() {
 
             drawPoints(points);
         }
-    }
+    }*/
 
     let drawPoints = function(points) {
         if (points.length == 0) {

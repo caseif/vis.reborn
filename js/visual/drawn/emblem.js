@@ -25,17 +25,13 @@ let Emblem = new function() {
             //return;
         }
 
-        let realBlockSize = Config.blockSize * Util.getResolutionMultiplier();
+        let realBlockSize = Config.blockSize * Util.getXResolutionMultiplier();
 
-        console.log(Config.spectrumWidth * Util.getResolutionMultiplier());
-        console.log(jqWindow.width());
-
-        let blockOffsetX = (jqWindow.width() - Config.spectrumWidth * Util.getResolutionMultiplier()) / 2;
+        let blockOffsetX = Util.getXOffset();
 
         let catOffsetX = blockOffsetX + realBlockSize * (1 - Config.emblemWidth) / 2;
 
-        let fullHeight = (Config.spectrumWidth / Config.spectrumAspectRatio + Config.verticalBuffer + Config.blockSize)
-                * Util.getResolutionMultiplier();
+        let fullHeight = Util.getDrawAreaHeight();
 
         let blockOffsetY = (jqWindow.height() + fullHeight) / 2 - realBlockSize;
         
@@ -49,8 +45,6 @@ let Emblem = new function() {
         Canvas.context.fillStyle = "#FFFFFF";
         Canvas.context.drawImage(image, catOffsetX, catOffsetY,
                 realBlockSize * Config.emblemWidth, realBlockSize * Config.emblemHeight);
-
-        console.log(blockOffsetX + ", " + blockOffsetY);
     }
 
 }

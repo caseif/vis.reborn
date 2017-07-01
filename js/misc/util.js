@@ -1,6 +1,7 @@
 let Util = new function() {
 
-    let resMult = 1;
+    let resMultX = 1;
+    let resMultY = 1;
 
     let jqWindow;
 
@@ -12,7 +13,7 @@ let Util = new function() {
 
         jqWindow = $(window);
 
-        Callbacks.addCallback(updateResolutionMultiplier);
+        Callbacks.addCallback(updateResolutionMultipliers);
     }
 
     this.getCurrentUrlPrefix = function() {
@@ -39,18 +40,17 @@ let Util = new function() {
         }
     }
 
-    this.getResolutionMultiplier = function() {
-        return resMult;
+    this.getXResolutionMultiplier = function() {
+        return resMultX;
     }
 
-    let updateResolutionMultiplier = function() {
-        let width = jqWindow.width();
-        let height = jqWindow.height();
-        if (width >= height) {
-            resMult = width / 1920;
-        } else {
-            resMult = height / 1080;
-        }
+    this.getYResolutionMultiplier = function() {
+        return resMultY;
+    }
+
+    let updateResolutionMultipliers = function() {
+        resMultX = jqWindow.width() / 1920;
+        resMultY = jqWindow.height() / 1080;
     }
 
     this.clamp = function(val, min, max) {
@@ -82,6 +82,22 @@ let Util = new function() {
 
     this.range = function(len) {
         return [...Array(len).keys()];
+    }
+
+    this.getXOffset = function() {
+        return (jqWindow.width() - Config.spectrumWidth * Util.getXResolutionMultiplier()) / 2;
+    }
+
+    this.getYOffset = function() {
+        return (jqWindow.height() - this.getDrawAreaHeight()) / 2;
+    }
+
+    this.getDrawAreaHeight = function() {
+        return this.getSpectrumHeight() + (Config.verticalBuffer + Config.blockSize) * this.getYResolutionMultiplier()
+    }
+
+    this.getSpectrumHeight = function() {
+        return (Config.spectrumWidth / Config.spectrumAspectRatio) * this.getYResolutionMultiplier()
     }
 
 }
