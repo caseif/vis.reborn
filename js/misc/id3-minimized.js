@@ -2,11 +2,11 @@
 {
     if ("object" === typeof exports && "undefined" !== typeof module)
         module.f = A();
-    else
-        if ("function" === typeof define && define.M)
+    else if ("function" === typeof define && define.M)
             define([], A);
         else {
-            var g; "undefined" !== typeof window ? g = window : "undefined" !== typeof global ? g = global : "undefined" !== typeof self ? g = self : g = this;
+            var g; 
+            "undefined" !== typeof window ? g = window : "undefined" !== typeof global ? g = global : "undefined" !== typeof self ? g = self : g = this;
             g.ID3 = A()
         }
 })
@@ -58,15 +58,19 @@
                 })
                 : "unknown" == typeof c && (d = b || IEBinary_getLength(c), this.a = function (a) {
                     return IEBinary_getByteAt(c, a + m)
-                }); this.s = function (a, b) {
+                }); 
+                this.s = function (a, b) {
                     for (var d = Array(b), m = 0; m < b; m++)
                         d[m] = this.a(a + m);
                     return d
-                }; this.l = function () {
+                }; 
+                this.l = function () {
                     return d
-                }; this.g = function (a, b) {
+                }; 
+                this.g = function (a, b) {
                     return 0 != (this.a(a) & 1 << b)
-                }; this.F = function (a) {
+                };
+                this.F = function (a) {
                     a = (this.a(a + 1) << 8) + this.a(a);
                     0 > a && (a += 65536);
                     return a
@@ -124,15 +128,18 @@
     4 == k.readyState && ("200" == k.status || "206" == k.status ? (k.fileSize = c || k.getResponseHeader("Content-Length"), b(k)) : d && d({ error: "xhr", xhr: k }), k = null)
 }),
                     k.open("GET", a, f), k.overrideMimeType && k.overrideMimeType("text/plain; charset=x-user-defined"), e && k.setRequestHeader("Range", "bytes=" + e[0] + "-" + e[1]), k.setRequestHeader("If-Modified-Since", "Sat, 01 Jan 1970 00:00:00 GMT"), k.send(null)) : d && d({ error: "Unable to create XHR object" })
-                } function m() {
+                }
+                function m() {
                     var a = null;
                     "undefined" === typeof window ? a = new (g("xmlhttprequest").XMLHttpRequest) :window.XMLHttpRequest?a=new window.XMLHttpRequest:window.ActiveXObject&&(a=new window.ActiveXObject("Microsoft.XMLHTTP"));return a}function d(a,b,d){var e=m();e?(b&&("undefined"!=typeof e.onload?(e.onload=function(){"200"==e.status||"206"==e.status?b(this):d&&d({error:"xhr",xhr:e});e=null},d&&(e.onerror=function(){d({error:"xhr",xhr:e});e=null})):e.onreadystatechange=function(){4==e.readyState&&("200"==e.status||"206"==e.status?b(this):d&&d({error:"xhr",xhr:e}),e=null)}),e.open("HEAD",a,!0),e.send(null)):
 d && d({ error: "Unable to create XHR object" })
-                    } function e(d, e) {
+                    } 
+                function e(d, e) {
                         var m, c;
                         function f(a) {
                             var b = ~~(a[0] / m) - c;
-                            a = ~~(a[1] / m) + 1 + c; 0 > b && (b = 0);
+                            a = ~~(a[1] / m) + 1 + c;
+                            0 > b && (b = 0);
                             a >= blockTotal && (a = blockTotal - 1);
                             return [b, a]
                         }
@@ -187,9 +194,8 @@ d && d({ error: "Unable to create XHR object" })
             var h = g("./binaryfile");
             l.f = function (f, c) {
                 return function (a, b) {
-                    var m = c ||
-                        new FileReader; m.onload =
-                        function (a) {
+                    var m = c || new FileReader; 
+                    m.onload = function (a) {
                         b(new h(a.target.result))
                     };
                     m.readAsBinaryString(f)
@@ -203,7 +209,8 @@ d && d({ error: "Unable to create XHR object" })
             function h(b) {
                 return "ftypM4A" == b.c(4, 7) ? f : "ID3" == b.c(0, 3) ? a : c
             }
-            var f = g("./id4"), c = g("./id3v1"), a = g("./id3v2"), b = g("./bufferedbinaryajax"), m = g("./filereader"); "undefined" !== typeof window && (window.FileAPIReader = m);
+            var f = g("./id4"), c = g("./id3v1"), a = g("./id3v2"), b = g("./bufferedbinaryajax"), m = g("./filereader"); 
+            "undefined" !== typeof window && (window.FileAPIReader = m);
             var d = {}, e = {}, r = [0, 7];
             d.B = function (a) {
                 delete e[a]
