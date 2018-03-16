@@ -378,10 +378,10 @@ l.f = f
             case 3: b = "utf-8"
         } return b
             }
-            var f = { b: {} }, c = "32x32 pixels 'file icon' (PNG only);Other file icon;Cover (front);Cover (back);Leaflet page;Media (e.g. lable side of CD);Lead artist/lead performer/soloist;Artist/performer;Conductor;Band/Orchestra;Composer;Lyricist/text writer;Recording Location;During recording;During performance;Movie/video screen capture;A bright coloured fish;Illustration;Band/artist logotype;Publisher/Studio logotype".split(";");
-            f.b.APIC =
-                function (a, b, m, d, e) {
-            e = e || "3"; d = a;
+            var f = { b: {} }, c = "32x32 pixels 'file icon' (PNG only);Other file icon;Cover (front); Cover (back);Leaflet page;Media (e.g. lable side of CD);Lead artist/lead performer/soloist;Artist/performer;Conductor;Band/Orchestra;Composer;Lyricist/text writer;Recording Location;During recording;During performance;Movie/video screen capture;A bright coloured fish;Illustration;Band/artist logotype;Publisher/Studio logotype".split(";");
+            f.b.APIC =function (a, b, m, d, e) {
+            e = e || "3"; 
+                d = a;
             var f = h(m.a(a));
     switch (e) {
         case "2":
@@ -391,7 +391,8 @@ l.f = f
         case "3":
         case "4":
             g = m.h(a + 1, b - (a - d), ""), a += 1 + g.j
-    } e = m.a(a, 1);
+    } 
+    e = m.a(a, 1);
     e = c[e];
     f = m.h(a + 1, b - (a - d), f);
     a += 1 + f.j;
@@ -417,7 +418,8 @@ l.f = f
                 var d = h(c.a(a));
                 return c.h(a + 1, b - 1, d).toString()
             };
-            f.b.TCON = function (a, b, c) { return f.b["T*"].apply(this, arguments).replace(/^\(\d+\)/, "") };
+            f.b.TCON = function (a, b, c) { 
+                return f.b["T*"].apply(this, arguments).replace(/^\(\d+\)/, "") };
             f.b.TCO = f.b.TCON;
             f.b.USLT = function (a, b, c) {
                 var d = a, e = h(c.a(a)), f = c.c(a + 1, 3), g = c.h(a + 4, b - 4, e);
@@ -427,7 +429,9 @@ l.f = f
             };
             f.b.ULT = f.b.USLT;
             l.f = f
-        }, {}], 8: [function (g, l) {
+        }, 
+                {}
+            ], 8: [function (g, l) {
             function h(a, b, f, d) {
                 var e = a.m(b);
                 if (0 == e) d();
@@ -465,11 +469,14 @@ l.f = f
                                 break;
                                 case "jpeg":
                                 case "png": k = { format: "image/" + w, data: b.s(v, q) }
-                        } a[x[0]] = "comment" === x[0] ? { text: k } : k
+                        } 
+                            a[x[0]] = "comment" === x[0] ? { text: k } : k
                     }
-                } g += l
+                } 
+                    g += l
             }
-        } var c = {
+        } 
+                var c = {
             types: {
                 0: "uint8", 1: "text", 13: "jpeg", 14: "png", 21: "uint8"
             },
@@ -488,7 +495,9 @@ l.f = f
                     return b
                 }
         };
-        l.f = c }, {}], 9: [function (g, l) {
+        l.f = c }, 
+                   {}
+                  ], 9: [function (g, l) {
             l.f = {
                 J: function (h, f, c) {
                     var a = 0, b = 1, g = 0;
